@@ -1,0 +1,28 @@
+{
+  "name": "cjrasmussen/string",
+  "description": "Simple functions for string manipulation and analysis",
+  "version": "1.0.0",
+  "keywords": ["string"],
+  "homepage": "https://www.clarkrasmussen.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Clark Rasmussen",
+      "homepage": "https://www.clarkrasmussen.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/cjrasmussen/String/issues",
+    "source": "https://github.com/cjrasmussen/String"
+  },
+  "require": {
+    "php": ">=7.1.0",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "cjrasmussen\\String\\": "src/"
+    }
+  }
+}

@@ -80,4 +80,21 @@ class Strings
 	{
 		return preg_match('|&([#a-zA-Z0-9]+);|i', $string);
 	}
+
+	/**
+	 * Determine if a string haystack contains string needle, with a default response for if needle is null
+	 *
+	 * @param string $haystack
+	 * @param string|null $needle
+	 * @param bool $default
+	 * @return bool
+	 */
+	public static function strContains($haystack, $needle = null, $default = true): bool
+	{
+		if (($haystack) AND ($needle)) {
+			return (false !== strpos($haystack, $needle));
+		}
+
+		return $default;
+	}
 }

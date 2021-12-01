@@ -82,6 +82,48 @@ class Strings
 	}
 
 	/**
+	 * Determine if a string is a palindrome
+	 *
+	 * Ignores case and punctuation unless optional $strict parameter is set to true
+	 *
+	 * @param string $string
+	 * @param bool $strict
+	 * @return bool
+	 */
+	public static function isPalindrome($string, $strict = false): bool
+	{
+		if (!$strict) {
+			$string = strtolower(preg_replace("/[^[[:alnum:]]+/U", '', $string));
+		}
+
+		return (strrev($string) === $string);
+	}
+
+	/**
+	 * Determine if two strings are anagrams of each other
+	 *
+	 * Ignores case and punctuation unless optional $strict parameter is set to true
+	 *
+	 * @param string $string1
+	 * @param string $string2
+	 * @param bool $strict
+	 * @return bool
+	 */
+	public static function isAnagram($string1, $string2, $strict = false): bool
+	{
+		if (!$strict) {
+			$string1 = strtolower(preg_replace("/[^[[:alnum:]]+/U", '', $string1));
+			$string2 = strtolower(preg_replace("/[^[[:alnum:]]+/U", '', $string2));
+		}
+
+		if (strlen($string1) !== strlen($string2)) {
+			return false;
+		}
+
+		return (count_chars($string1) === count_chars($string2));
+	}
+
+	/**
 	 * Determine if a string haystack contains string needle, with a default response for if needle is null
 	 *
 	 * @param string $haystack

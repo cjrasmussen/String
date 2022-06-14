@@ -139,4 +139,16 @@ class Strings
 
 		return $default;
 	}
+
+	/**
+	 * Return a dash if the supplied value is null
+	 *
+	 * @param string|int|null $input
+	 * @param string $dash
+	 * @return string
+	 */
+	public static function nullToDash($input, string $dash = '&mdash;'): string
+	{
+		return $input ?? $dash;
+	}
 }

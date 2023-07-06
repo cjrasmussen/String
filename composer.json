@@ -1,14 +1,14 @@
 {
   "name": "cjrasmussen/string",
   "description": "Simple functions for string manipulation and analysis",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "keywords": ["string"],
-  "homepage": "https://www.clarkrasmussen.com",
+  "homepage": "https://cjr.dev",
   "license": "MIT",
   "authors": [
     {
       "name": "Clark Rasmussen",
-      "homepage": "https://www.clarkrasmussen.com",
+      "homepage": "https://cjr.dev",
       "role": "Developer"
     }
   ],

@@ -1,6 +1,8 @@
 <?php
 namespace cjrasmussen\String;
 
+use Exception;
+
 class Strings
 {
 	public const FILTER_ALPHA = 1;
@@ -56,8 +58,13 @@ class Strings
 			return false;
 		}
 
-		json_decode($string, false, 512, JSON_THROW_ON_ERROR);
-		return (json_last_error() === JSON_ERROR_NONE);
+		try {
+			json_decode($string, false, 512, JSON_THROW_ON_ERROR);
+		} catch (Exception $e) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**

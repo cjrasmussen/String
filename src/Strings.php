@@ -14,13 +14,13 @@ class Strings
 	 * @param int $return_type
 	 * @return string
 	 */
-	public static function filterChars($string, $return_type = self::FILTER_ALPHANUM): string
+	public static function filterChars(string $string, int $return_type = self::FILTER_ALPHANUM): string
 	{
 		switch ($return_type) {
 			case self::FILTER_ALPHA:
 				return preg_replace('|[^A-Za-z]|', '', $string);
 			case self::FILTER_NUM:
-				return preg_replace('|[^0-9]|', '', $string);
+				return preg_replace('|\D|', '', $string);
 			default:
 				return preg_replace('|[^A-Za-z0-9]|', '', $string);
 		}
@@ -32,7 +32,7 @@ class Strings
 	 * @param string $word
 	 * @return string
 	 */
-	public static function possessive($word): string
+	public static function possessive(string $word): string
 	{
 		if (strtolower(substr($word, -1)) === 's') {
 			$word .= "'";
@@ -48,14 +48,15 @@ class Strings
 	 *
 	 * @param string $string
 	 * @return bool
+	 * @throws \JsonException
 	 */
-	public static function isJson($string): bool
+	public static function isJson(string $string): bool
 	{
 		if (is_numeric($string)) {
 			return false;
 		}
 
-		json_decode($string, false);
+		json_decode($string, false, 512, JSON_THROW_ON_ERROR);
 		return (json_last_error() === JSON_ERROR_NONE);
 	}
 
@@ -65,7 +66,7 @@ class Strings
 	 * @param string $string
 	 * @return bool
 	 */
-	public static function isHtml($string): bool
+	public static function isHtml(string $string): bool
 	{
 		return ($string !== strip_tags($string));
 	}
@@ -76,7 +77,7 @@ class Strings
 	 * @param string $string
 	 * @return bool
 	 */
-	public static function isHtmlEncoded($string): bool
+	public static function isHtmlEncoded(string $string): bool
 	{
 		return preg_match('|&([#a-zA-Z0-9]+);|i', $string);
 	}
@@ -90,7 +91,7 @@ class Strings
 	 * @param bool $strict
 	 * @return bool
 	 */
-	public static function isPalindrome($string, $strict = false): bool
+	public static function isPalindrome(string $string, bool $strict = false): bool
 	{
 		if (!$strict) {
 			$string = strtolower(preg_replace("/[^[[:alnum:]]+/U", '', $string));
@@ -109,7 +110,7 @@ class Strings
 	 * @param bool $strict
 	 * @return bool
 	 */
-	public static function isAnagram($string1, $string2, $strict = false): bool
+	public static function isAnagram(string $string1, string $string2, bool $strict = false): bool
 	{
 		if (!$strict) {
 			$string1 = strtolower(preg_replace("/[^[[:alnum:]]+/U", '', $string1));
@@ -131,7 +132,7 @@ class Strings
 	 * @param bool $default
 	 * @return bool
 	 */
-	public static function strContains($haystack, $needle = null, $default = true): bool
+	public static function strContains(string $haystack, ?string $needle = null, bool $default = true): bool
 	{
 		if (($haystack) AND ($needle)) {
 			return (false !== strpos($haystack, $needle));
@@ -160,7 +161,7 @@ class Strings
 	 * @param string $text
 	 * @return array
 	 */
-	public static function getUrls($text): array
+	public static function getUrls(string $text): array
 	{
 		$output = [];
 

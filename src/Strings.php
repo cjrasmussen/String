@@ -151,4 +151,34 @@ class Strings
 	{
 		return $input ?? $dash;
 	}
+
+	/**
+	 * Return an array of URLs appearing in a string
+	 *
+	 * Array of objects including the URL, start position, and end position
+	 *
+	 * @param string $text
+	 * @return array
+	 */
+	public static function getUrls($text): array
+	{
+		$output = [];
+
+		preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w]+\)|([^[:punct:]\s]|/))#', $text, $matches);
+
+		if (count($matches[0])) {
+			$offset = 0;
+			foreach ($matches[0] AS $url) {
+				$start = strpos($text, $url, $offset);
+				$offset = $end = $start + strlen($url);
+				$output[] = (object)[
+					'url' => $url,
+					'start' => $start,
+					'end' => $end,
+				];
+			}
+		}
+
+		return $output;
+	}
 }

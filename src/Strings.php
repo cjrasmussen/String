@@ -10,14 +10,18 @@ class Strings
 	public const FILTER_ALPHANUM = 3;
 
 	/**
-	 * Returns
+	 * Returns a string with the specified character set filtered out
 	 *
-	 * @param string $string
+	 * @param string|null $string
 	 * @param int $return_type
 	 * @return string
 	 */
-	public static function filterChars(string $string, int $return_type = self::FILTER_ALPHANUM): string
+	public static function filterChars(?string $string, int $return_type = self::FILTER_ALPHANUM): string
 	{
+		if (!$string) {
+			return '';
+		}
+
 		switch ($return_type) {
 			case self::FILTER_ALPHA:
 				return preg_replace('|[^A-Za-z]|', '', $string);

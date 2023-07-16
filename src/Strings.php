@@ -193,4 +193,35 @@ class Strings
 
 		return $output;
 	}
+
+	/**
+	 * Return an array of "hashtags" appearing in a string
+	 *
+	 * Array of objects including the hashtag, the text without the hash sign, start position, and end position
+	 *
+	 * @param string $text
+	 * @return array
+	 */
+	public static function getHashtags(string $text): array
+	{
+		$output = [];
+
+		preg_match_all('/#(\\w+)/', $text, $matches);
+
+		if (count($matches[0])) {
+			$offset = 0;
+			foreach ($matches[0] AS $hashtag) {
+				$start = strpos($text, $hashtag, $offset);
+				$offset = $end = $start + strlen($hashtag);
+				$output[] = (object)[
+					'hashtag' => $hashtag,
+					'text' => substr($hashtag, 1),
+					'start' => $start,
+					'end' => $end,
+				];
+			}
+		}
+
+		return $output;
+	}
 }

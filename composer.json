@@ -1,7 +1,7 @@
 {
   "name": "cjrasmussen/string",
   "description": "Simple functions for string manipulation and analysis",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "keywords": ["string"],
   "homepage": "https://cjr.dev",
   "license": "MIT",

@@ -52,13 +52,12 @@ class Strings
 	/**
 	 * Determine if a string is JSON
 	 *
-	 * @param string $string
+	 * @param string|null $string
 	 * @return bool
-	 * @throws \JsonException
 	 */
-	public static function isJson(string $string): bool
+	public static function isJson(?string $string): bool
 	{
-		if (is_numeric($string)) {
+		if (($string === null) || (is_numeric($string))) {
 			return false;
 		}
 

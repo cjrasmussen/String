@@ -205,7 +205,7 @@ class Strings
 	{
 		$output = [];
 
-		preg_match_all('/#(\\w+)/', $text, $matches);
+		preg_match_all('/\B(#\w+\b)/', $text, $matches);
 
 		if (count($matches[0])) {
 			$offset = 0;

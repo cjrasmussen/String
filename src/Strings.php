@@ -50,6 +50,18 @@ class Strings
 	}
 
 	/**
+	 * Lazy method of determining the proper indefinite article for a word
+	 *
+	 * @param string $word
+	 * @return string
+	 */
+	public static function lazyIndefiniteArticle(string $word): string
+	{
+		$vowels = ['a', 'e', 'i', 'o', 'u'];
+		return (in_array($word[0], $vowels, true)) ? 'an' : 'a';
+	}
+
+	/**
 	 * Determine if a string is JSON
 	 *
 	 * @param string|null $string

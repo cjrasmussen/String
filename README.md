@@ -2,17 +2,21 @@
 
 Simple functions for string manipulation and analysis.
 
-
 ## Usage
 
 ```php
-use cjrasmussen\String\Strings;
+use cjrasmussen\String\Check;
+use cjrasmussen\String\Convert;
+use cjrasmussen\String\Parse;
 
-$string = Strings::filterChars('I have 5 apples', Strings::FILTER_NUM);
+$string = Parse::filterChars('I have 5 apples', Parse::FILTER_NUM);
 echo $string; // 5
 
-$json = Strings::isJson('This is not JSON');
+$json = Check::isJson('This is not JSON');
 echo $json; // false
+
+echo Convert::booleanToYesNo(false); // No
+echo Convert::booleanToYesNo(true); // Yes
 ```
 
 ## Installation

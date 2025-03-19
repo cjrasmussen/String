@@ -1,7 +1,7 @@
 {
   "name": "cjrasmussen/string",
   "description": "Simple functions for string manipulation and analysis",
-  "version": "1.2.3",
+  "version": "2.0.0",
   "keywords": ["string"],
   "homepage": "https://cjr.dev",
   "license": "MIT",
@@ -19,6 +19,10 @@
   "require": {
     "php": ">=7.4.0",
     "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6",
+    "roave/security-advisories": "dev-latest"
   },
   "autoload": {
     "psr-4": {

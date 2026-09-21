@@ -5,9 +5,9 @@ use Exception;
 
 class Parse
 {
-	public const FILTER_ALPHA = 1;
-	public const FILTER_NUM = 2;
-	public const FILTER_ALPHANUM = 3;
+	public const int FILTER_ALPHA = 1;
+	public const int FILTER_NUM = 2;
+	public const int FILTER_ALPHANUM = 3;
 
 	/**
 	 * Returns a string with the specified character set filtered out
@@ -22,14 +22,11 @@ class Parse
 			return '';
 		}
 
-		switch ($return_type) {
-			case self::FILTER_ALPHA:
-				return preg_replace('|[^A-Za-z]|', '', $string);
-			case self::FILTER_NUM:
-				return preg_replace('|\D|', '', $string);
-			default:
-				return preg_replace('|[^A-Za-z0-9]|', '', $string);
-		}
+		return match ($return_type) {
+			self::FILTER_ALPHA => preg_replace('|[^A-Za-z]|', '', $string),
+			self::FILTER_NUM => preg_replace('|\D|', '', $string),
+			default => preg_replace('|[^A-Za-z0-9]|', '', $string),
+		};
 	}
 
 	/**
@@ -44,7 +41,7 @@ class Parse
 	{
 		$output = [];
 
-		preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w]+\)|([^[:punct:]\s]|/))#', $text, $matches);
+		preg_match_all('#\bhttps?://[^\s()<>]+(?:\(\w+\)|([^[:punct:]\s]|/))#', $text, $matches);
 
 		if (count($matches[0])) {
 			$offset = 0;

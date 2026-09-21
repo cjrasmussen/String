@@ -20,7 +20,7 @@ class Check
 
 		try {
 			json_decode($string, false, 512, JSON_THROW_ON_ERROR);
-		} catch (Exception $e) {
+		} catch (Exception) {
 			return false;
 		}
 
@@ -102,7 +102,7 @@ class Check
 	public static function strContains(string $haystack, ?string $needle = null, bool $default = true): bool
 	{
 		if (($haystack) && ($needle)) {
-			return (false !== strpos($haystack, $needle));
+			return (str_contains($haystack, $needle));
 		}
 
 		return $default;

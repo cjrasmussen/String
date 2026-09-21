@@ -19,7 +19,7 @@ class Sanitize
 	public static function sqlIdentifier(string $text): string
 	{
 		$text = stripslashes($text);
-		$text = preg_replace('|;([ ]*)--|', '', $text);
+		$text = preg_replace('|;( *)--|', '', $text);
 		return addslashes($text);
 	}
 

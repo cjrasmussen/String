@@ -24,11 +24,11 @@ class Convert
 	/**
 	 * Return a dash if the supplied value is null
 	 *
-	 * @param string|int|null $input
+	 * @param int|string|float|null $input
 	 * @param string $dash
 	 * @return string
 	 */
-	public static function nullToDash($input, string $dash = '&mdash;'): string
+	public static function nullToDash(int|string|float|null $input, string $dash = '&mdash;'): string
 	{
 		return $input ?? $dash;
 	}
@@ -36,10 +36,10 @@ class Convert
 	/**
 	 * Turns boolean (or boolean-ish) response into yes/no
 	 *
-	 * @param int|string|bool $var
+	 * @param bool|int|string|null $var
 	 * @return string
 	 */
-	public static function booleanToYesNo($var): string
+	public static function booleanToYesNo(bool|int|string|null $var): string
 	{
 		if (($var === null) || ($var === false) || ($var === 0) || ($var === '0')) {
 			return 'No';

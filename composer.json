@@ -1,7 +1,7 @@
 {
   "name": "cjrasmussen/string",
   "description": "Simple functions for string manipulation and analysis",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "keywords": ["string"],
   "homepage": "https://cjr.dev",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "source": "https://github.com/cjrasmussen/String"
   },
   "require": {
-    "php": ">=7.4.0",
+    "php": ">=8.5.0",
     "ext-json": "*"
   },
   "require-dev": {
